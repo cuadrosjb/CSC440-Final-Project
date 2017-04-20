@@ -15,12 +15,12 @@ public class Environment {
 		int[] page = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1};
 		
 		List<Replacement> list = new ArrayList<Replacement>();
-		list.add(new Optimal(page, 3));
-		list.add(new Optimal(page, 4));
-		list.add(new FIFO(page, 3));
-		list.add(new FIFO(page, 4));
+//		list.add(new Optimal(page, 3));
+//		list.add(new Optimal(page, 4));
+//		list.add(new FIFO(page, 3));
+//		list.add(new FIFO(page, 4));
 		list.add(new LRU(page, 3));
-		list.add(new LRU(page, 4));
+//		list.add(new LRU(page, 4));
 		
 		for(Replacement r : list){
 			r.run();
