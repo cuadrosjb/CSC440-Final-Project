@@ -15,14 +15,12 @@ public class FIFO implements Replacement {
 	public FIFO() {
 		frame = 0;
 		missed = 0;
-
 	}
 
 	public FIFO(int[] page, int frame) {
 		this.page = page;
 		this.frame = frame;
 		q = new LinkedList<Integer>();
-
 	}
 
 	@Override
@@ -30,38 +28,46 @@ public class FIFO implements Replacement {
 		for (int i : page) {
 			insert(i);
 		}
+		System.out.println("Page fault: " + missed);
 	}
 
 	public void insert(int value) {
-		
+
 		if (q.size() < frame) {
 			if (!q.contains(value)) {
 				missed++;
 				q.add(value);
 			}
 		} else {
-			
+
 			if (!q.contains(value)) {
-				System.out.println("Inserting " + value + " into frame");
 				missed++;
 				q.poll();
 				q.add(value);
 			}
 		}
 		print();
-		System.out.println("size of queue: " + q.size());
-		System.out.println("Page fault: " + missed);
-
 	}
 
 	public void print() {
+		int counter = 0;
+
 		for (Object obj : q) {
 			if (obj == null) {
 				System.out.println("| |\r");
 			} else {
 				System.out.println("|" + obj + "|\r");
 			}
+			counter++;
 		}
+
+		while (counter != frame) {
+			System.out.println("| |\r");
+			counter++;
+		}
+
+		System.out.println("---");
+
 	}
 
 }
