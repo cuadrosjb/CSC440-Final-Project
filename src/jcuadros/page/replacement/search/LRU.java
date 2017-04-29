@@ -3,6 +3,12 @@ package jcuadros.page.replacement.search;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Jeffrey B Cuadros
+ * 
+ * Implementation of the least recently used algorithm
+ *
+ */
 public class LRU implements Replacement {
 
 	private int[] page;
@@ -21,18 +27,16 @@ public class LRU implements Replacement {
 		this.frame = frame;
 		lst = new ArrayList<Integer>();
 		vals = new ArrayList<Integer>();
+		
 	}
 
 	@Override
 	public void run() {
-
+		System.out.println("LRU Page Replacement with " + frame + " frames");
 		for (int i : page) {
 			insert(i);
-
 		}
-
-		System.out.println("Page fault: " + missed);
-
+		System.out.println("Page fault: " + missed + "\r");
 	}
 
 	public void insert(int value) {

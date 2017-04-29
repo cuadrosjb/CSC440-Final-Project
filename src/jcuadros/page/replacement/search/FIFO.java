@@ -3,6 +3,12 @@ package jcuadros.page.replacement.search;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * @author Jeffrey B Cuadros
+ * 
+ * Implementation of the first in first out algorithm
+ *
+ */
 public class FIFO implements Replacement {
 
 	private int[] page;
@@ -21,14 +27,16 @@ public class FIFO implements Replacement {
 		this.page = page;
 		this.frame = frame;
 		q = new LinkedList<Integer>();
+		
 	}
 
 	@Override
 	public void run() {
+		System.out.println("FIFO Page Replacement with " + frame + " frames");
 		for (int i : page) {
 			insert(i);
 		}
-		System.out.println("Page fault: " + missed);
+		System.out.println("Page fault: " + missed + "\r");
 	}
 
 	public void insert(int value) {
